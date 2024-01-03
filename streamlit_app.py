@@ -38,10 +38,10 @@ streamlit.dataframe(fruityvice_normalized)
 import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM pc_rivery_db.public.fruit_load_list" + add_my_fruit)
+my_cur.execute("SELECT * FROM pc_rivery_db.public.fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
+streamlit.dataframe(my_data_rows + add_my_fruit)
 
 
 # Allow the end user to add a fruit to the list
